@@ -1,0 +1,344 @@
+{
+  "version": "1.0.0",
+  "agents": {
+    "software-engineering-expert": {
+      "name": "Software Engineering Expert",
+      "role": "Core architecture and engineering practices specialist",
+      "capabilities": [
+        "System architecture design",
+        "Code quality assessment",
+        "Engineering best practices",
+        "Design patterns implementation",
+        "Technical debt management"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "code-reviewer": {
+      "name": "Code Reviewer",
+      "role": "Code quality assurance and review specialist",
+      "capabilities": [
+        "Code review and analysis",
+        "Bug detection and prevention",
+        "Code optimization suggestions",
+        "Style guide enforcement",
+        "Refactoring recommendations"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "orchestrator": {
+      "name": "Multi-Dimensional Orchestrator",
+      "role": "Complex task coordination and analysis",
+      "capabilities": [
+        "Multi-agent task coordination",
+        "Complex problem decomposition",
+        "Resource allocation optimization",
+        "Cross-domain analysis",
+        "Strategic planning"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "vibe-coding-coordinator": {
+      "name": "Vibe Coding Coordinator", 
+      "role": "Autonomous development preparation and workflow optimization",
+      "capabilities": [
+        "Development environment setup",
+        "Workflow optimization",
+        "Tool integration",
+        "Developer experience enhancement",
+        "Productivity maximization"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "security-specialist": {
+      "name": "Security Specialist",
+      "role": "Security analysis and vulnerability assessment",
+      "capabilities": [
+        "Security vulnerability scanning",
+        "Threat modeling",
+        "Secure coding practices",
+        "Authentication and authorization",
+        "Data protection strategies"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "documentation-specialist": {
+      "name": "Documentation Specialist",
+      "role": "Technical documentation and API documentation",
+      "capabilities": [
+        "Technical documentation writing",
+        "API documentation generation",
+        "Code commenting standards",
+        "User guide creation",
+        "Knowledge base management"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "git-expert": {
+      "name": "Git Expert",
+      "role": "Version control and collaboration workflows",
+      "capabilities": [
+        "Git workflow optimization",
+        "Branch strategy design",
+        "Merge conflict resolution",
+        "Commit message standards",
+        "Collaboration best practices"
+      ],
+      "priority": 1,
+      "active": true
+    },
+    "task-executor": {
+      "name": "Task Executor",
+      "role": "Execute tasks with validation and error handling",
+      "capabilities": [
+        "Task execution management",
+        "Error handling and recovery",
+        "Progress tracking",
+        "Validation checks",
+        "Result reporting"
+      ],
+      "priority": 2,
+      "active": true
+    },
+    "task-checker": {
+      "name": "Task Checker",
+      "role": "Validate task completion and quality assurance",
+      "capabilities": [
+        "Task completion validation",
+        "Quality assurance checks",
+        "Acceptance criteria verification",
+        "Test result analysis",
+        "Performance validation"
+      ],
+      "priority": 2,
+      "active": true
+    },
+    "testing-specialist": {
+      "name": "Testing Specialist",
+      "role": "Test strategy and automation expert",
+      "capabilities": [
+        "Test strategy development",
+        "Test automation framework setup",
+        "Unit test writing",
+        "Integration test design",
+        "Performance test planning"
+      ],
+      "priority": 2,
+      "active": false,
+      "activationTriggers": ["test", "testing", "spec", "unit", "integration"]
+    },
+    "devops-expert": {
+      "name": "DevOps Expert",
+      "role": "CI/CD and infrastructure automation",
+      "capabilities": [
+        "CI/CD pipeline design",
+        "Infrastructure as Code",
+        "Deployment automation",
+        "Container orchestration",
+        "Monitoring setup"
+      ],
+      "priority": 2,
+      "active": false,
+      "activationTriggers": ["deploy", "ci", "cd", "docker", "kubernetes"]
+    },
+    "performance-optimizer": {
+      "name": "Performance Optimizer",
+      "role": "Performance analysis and optimization",
+      "capabilities": [
+        "Performance profiling",
+        "Bottleneck identification",
+        "Optimization strategies",
+        "Load testing",
+        "Scalability planning"
+      ],
+      "priority": 2,
+      "active": false,
+      "activationTriggers": ["performance", "optimization", "slow", "bottleneck"]
+    },
+    "database-expert": {
+      "name": "Database Expert",
+      "role": "Database design and optimization",
+      "capabilities": [
+        "Database schema design",
+        "Query optimization",
+        "Data modeling",
+        "Migration strategies",
+        "Backup and recovery"
+      ],
+      "priority": 2,
+      "active": false,
+      "activationTriggers": ["database", "sql", "migration", "schema", "query"]
+    },
+    "react-expert": {
+      "name": "React Expert",
+      "role": "React development specialist",
+      "capabilities": [
+        "React component development",
+        "State management",
+        "Hooks implementation",
+        "Performance optimization",
+        "Testing strategies"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["react", "jsx", "component", "hook", "state"]
+    },
+    "nextjs-expert": {
+      "name": "Next.js Expert",
+      "role": "Next.js application specialist",
+      "capabilities": [
+        "Next.js application architecture",
+        "Server-side rendering",
+        "Static site generation",
+        "API routes",
+        "Performance optimization"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["nextjs", "next.js", "ssr", "ssg", "vercel"]
+    },
+    "tailwind-css-expert": {
+      "name": "Tailwind CSS Expert",
+      "role": "Tailwind CSS styling specialist",
+      "capabilities": [
+        "Tailwind CSS implementation",
+        "Responsive design",
+        "Component styling",
+        "Design system creation",
+        "Performance optimization"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["tailwind", "css", "styling", "design", "responsive"]
+    },
+    "typescript-expert": {
+      "name": "TypeScript Expert",
+      "role": "TypeScript development specialist",
+      "capabilities": [
+        "TypeScript configuration",
+        "Type system design",
+        "Generic programming",
+        "Advanced TypeScript features",
+        "Migration strategies"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["typescript", "types", "interface", "generic", ".ts"]
+    },
+    "nodejs-expert": {
+      "name": "Node.js Expert",
+      "role": "Node.js server development specialist",
+      "capabilities": [
+        "Node.js server architecture",
+        "Express.js development",
+        "API development",
+        "Middleware implementation",
+        "Performance optimization"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["nodejs", "node.js", "express", "server", "api"]
+    },
+    "fastapi-expert": {
+      "name": "FastAPI Expert",
+      "role": "FastAPI Python development specialist",
+      "capabilities": [
+        "FastAPI application development",
+        "Async programming",
+        "API documentation",
+        "Dependency injection",
+        "Performance optimization"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["fastapi", "python", "async", "pydantic", "uvicorn"]
+    },
+    "django-expert": {
+      "name": "Django Expert",
+      "role": "Django framework specialist",
+      "capabilities": [
+        "Django application development",
+        "ORM optimization",
+        "Admin interface customization",
+        "Authentication systems",
+        "REST API development"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["django", "python", "orm", "models", "views"]
+    },
+    "gin-expert": {
+      "name": "Gin Expert",
+      "role": "Go web development with Gin framework",
+      "capabilities": [
+        "Gin framework development",
+        "RESTful API creation",
+        "Middleware implementation",
+        "JSON handling",
+        "Performance optimization"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["gin", "golang", "go", "rest", "api"]
+    },
+    "fiber-expert": {
+      "name": "Fiber Expert",
+      "role": "Go web development with Fiber framework",
+      "capabilities": [
+        "Fiber framework development",
+        "High-performance web apps",
+        "Middleware systems",
+        "WebSocket support",
+        "Template engines"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["fiber", "golang", "go", "fast", "web"]
+    },
+    "rails-expert": {
+      "name": "Rails Expert",
+      "role": "Ruby on Rails development specialist",
+      "capabilities": [
+        "Rails application development",
+        "ActiveRecord optimization",
+        "MVC architecture",
+        "Gem integration",
+        "Deployment strategies"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["rails", "ruby", "activerecord", "mvc", "gem"]
+    },
+    "laravel-expert": {
+      "name": "Laravel Expert",
+      "role": "PHP Laravel framework specialist",
+      "capabilities": [
+        "Laravel application development",
+        "Eloquent ORM",
+        "Artisan commands",
+        "Blade templating",
+        "API development"
+      ],
+      "priority": 3,
+      "active": false,
+      "activationTriggers": ["laravel", "php", "eloquent", "artisan", "blade"]
+    }
+  },
+  "coordination": {
+    "primaryOrchestrator": "orchestrator",
+    "qualityGate": "task-checker",
+    "securityReview": "security-specialist",
+    "codeReview": "code-reviewer"
+  },
+  "taskManagement": {
+    "enabled": true,
+    "primaryExecutor": "task-executor",
+    "validator": "task-checker",
+    "coordinator": "orchestrator"
+  }
+}

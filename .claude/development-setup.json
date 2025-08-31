@@ -1,0 +1,208 @@
+{
+  "version": "1.0.0",
+  "developmentEnvironment": {
+    "autoSetup": true,
+    "adaptiveConfiguration": true,
+    "performanceOptimization": true
+  },
+  "supportedTechnologies": {
+    "frontend": {
+      "react": {
+        "version": "^18.0.0",
+        "dependencies": ["@types/react", "@types/react-dom"],
+        "devDependencies": ["@vitejs/plugin-react", "eslint-plugin-react-hooks"],
+        "agents": ["react-expert", "typescript-expert"],
+        "mcpServers": ["browsermcp"],
+        "setupCommands": [
+          "npm create react-app . --template typescript",
+          "npm install --save-dev prettier eslint"
+        ]
+      },
+      "nextjs": {
+        "version": "^14.0.0",
+        "dependencies": ["@types/node"],
+        "devDependencies": ["eslint-config-next"],
+        "agents": ["nextjs-expert", "react-expert", "typescript-expert"],
+        "mcpServers": ["browsermcp"],
+        "setupCommands": [
+          "npx create-next-app@latest . --typescript --tailwind --eslint",
+          "npm install --save-dev prettier"
+        ]
+      },
+      "vue": {
+        "version": "^3.0.0",
+        "agents": ["vue-expert", "typescript-expert"],
+        "mcpServers": ["browsermcp"],
+        "setupCommands": [
+          "npm create vue@latest .",
+          "npm install"
+        ]
+      }
+    },
+    "backend": {
+      "nodejs": {
+        "version": ">=18.0.0",
+        "framework": "express",
+        "dependencies": ["express", "@types/express", "cors", "helmet"],
+        "devDependencies": ["nodemon", "@types/node", "ts-node"],
+        "agents": ["nodejs-expert", "typescript-expert"],
+        "mcpServers": ["postgres", "redis"],
+        "setupCommands": [
+          "npm init -y",
+          "npm install express cors helmet",
+          "npm install --save-dev nodemon @types/node @types/express typescript ts-node"
+        ]
+      },
+      "fastapi": {
+        "version": ">=0.100.0",
+        "dependencies": ["fastapi", "uvicorn", "pydantic", "sqlalchemy"],
+        "devDependencies": ["pytest", "black", "mypy"],
+        "agents": ["fastapi-expert", "python-expert"],
+        "mcpServers": ["postgres", "redis"],
+        "setupCommands": [
+          "pip install fastapi uvicorn pydantic sqlalchemy",
+          "pip install --dev pytest black mypy"
+        ]
+      },
+      "go": {
+        "version": ">=1.21",
+        "framework": "gin",
+        "dependencies": ["gin-gonic/gin", "gorm.io/gorm"],
+        "agents": ["gin-expert", "go-expert"],
+        "mcpServers": ["postgres", "redis"],
+        "setupCommands": [
+          "go mod init temp-site",
+          "go get github.com/gin-gonic/gin",
+          "go get gorm.io/gorm"
+        ]
+      }
+    },
+    "databases": {
+      "postgresql": {
+        "version": ">=13",
+        "agents": ["database-expert"],
+        "mcpServers": ["postgres"],
+        "setupCommands": [
+          "createdb temp_site_dev",
+          "createdb temp_site_test"
+        ]
+      },
+      "sqlite": {
+        "agents": ["database-expert"],
+        "mcpServers": ["sqlite"],
+        "setupCommands": []
+      },
+      "mongodb": {
+        "version": ">=5.0",
+        "agents": ["database-expert"],
+        "mcpServers": ["mongodb"],
+        "setupCommands": []
+      }
+    }
+  },
+  "developmentTools": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "golang.go"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "typescript.preferences.importModuleSpecifier": "relative"
+      }
+    },
+    "git": {
+      "hooks": {
+        "pre-commit": [
+          "npm run lint",
+          "npm run test",
+          "npm run type-check"
+        ],
+        "pre-push": [
+          "npm run build",
+          "npm run test:integration"
+        ]
+      },
+      "configuration": {
+        "commit.template": ".gitmessage",
+        "core.editor": "code --wait"
+      }
+    },
+    "docker": {
+      "enabled": false,
+      "activationTriggers": ["containerization", "deployment"],
+      "defaultFiles": ["Dockerfile", "docker-compose.yml", ".dockerignore"]
+    }
+  },
+  "projectTemplates": {
+    "fullstack-typescript": {
+      "frontend": "nextjs",
+      "backend": "nodejs",
+      "database": "postgresql",
+      "agents": ["nextjs-expert", "nodejs-expert", "typescript-expert", "database-expert"],
+      "mcpServers": ["browsermcp", "postgres"],
+      "description": "Complete TypeScript full-stack application"
+    },
+    "api-only": {
+      "backend": "fastapi",
+      "database": "postgresql",
+      "agents": ["fastapi-expert", "database-expert"],
+      "mcpServers": ["postgres"],
+      "description": "API-only backend service"
+    },
+    "frontend-only": {
+      "frontend": "react",
+      "agents": ["react-expert", "typescript-expert"],
+      "mcpServers": ["browsermcp"],
+      "description": "Frontend-only React application"
+    },
+    "microservice": {
+      "backend": "go",
+      "database": "postgresql",
+      "agents": ["gin-expert", "database-expert", "devops-expert"],
+      "mcpServers": ["postgres", "docker"],
+      "description": "Go microservice with containerization"
+    }
+  },
+  "qualityStandards": {
+    "codeQuality": {
+      "linting": true,
+      "formatting": true,
+      "typeChecking": true,
+      "testCoverage": 80
+    },
+    "security": {
+      "dependencyScanning": true,
+      "secretsScanning": true,
+      "vulnerabilityAssessment": true
+    },
+    "performance": {
+      "bundleAnalysis": true,
+      "performanceMetrics": true,
+      "optimizationSuggestions": true
+    }
+  },
+  "automationRules": {
+    "onProjectInit": [
+      "detect-technology-stack",
+      "activate-relevant-agents",
+      "setup-development-environment",
+      "configure-quality-tools",
+      "create-initial-structure"
+    ],
+    "onFileChange": [
+      "activate-relevant-agents",
+      "update-mcp-servers",
+      "refresh-dependencies"
+    ],
+    "onDeployment": [
+      "run-quality-checks",
+      "security-scan",
+      "performance-validation"
+    ]
+  }
+}

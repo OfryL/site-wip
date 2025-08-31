@@ -1,0 +1,125 @@
+{
+  "version": "1.0.0",
+  "mcpServers": {
+    "filesystem": {
+      "command": "uvx",
+      "args": ["mcp-server-filesystem", "/Users/ofri/repos/temp-site"],
+      "env": {},
+      "description": "File system operations for project directory",
+      "capabilities": ["file-read", "file-write", "directory-operations"],
+      "active": true
+    },
+    "git": {
+      "command": "uvx",
+      "args": ["mcp-server-git", "--repository", "/Users/ofri/repos/temp-site"],
+      "env": {},
+      "description": "Git operations for version control",
+      "capabilities": ["git-status", "git-commit", "git-branch", "git-merge"],
+      "active": false,
+      "activationTrigger": "git-init"
+    },
+    "browsermcp": {
+      "command": "npx",
+      "args": ["browsermcp"],
+      "env": {},
+      "description": "Browser automation for testing frontend applications",
+      "capabilities": ["browser-testing", "e2e-testing", "ui-automation"],
+      "active": false,
+      "activationTriggers": ["frontend", "react", "nextjs", "testing"]
+    },
+    "postgres": {
+      "command": "uvx",
+      "args": ["mcp-server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://localhost/temp_site_dev"
+      },
+      "description": "PostgreSQL database operations",
+      "capabilities": ["database-queries", "schema-management", "data-operations"],
+      "active": false,
+      "activationTriggers": ["database", "postgres", "sql"]
+    },
+    "sqlite": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite"],
+      "env": {
+        "SQLITE_DATABASE_PATH": "/Users/ofri/repos/temp-site/database.sqlite"
+      },
+      "description": "SQLite database operations for local development",
+      "capabilities": ["local-database", "development-db", "testing-db"],
+      "active": false,
+      "activationTriggers": ["sqlite", "local-db", "development"]
+    },
+    "redis": {
+      "command": "uvx",
+      "args": ["mcp-server-redis"],
+      "env": {
+        "REDIS_URL": "redis://localhost:6379"
+      },
+      "description": "Redis operations for caching and session management",
+      "capabilities": ["caching", "session-management", "pub-sub"],
+      "active": false,
+      "activationTriggers": ["cache", "redis", "session"]
+    },
+    "mongodb": {
+      "command": "uvx",
+      "args": ["mcp-server-mongodb"],
+      "env": {
+        "MONGODB_CONNECTION_STRING": "mongodb://localhost:27017/temp_site"
+      },
+      "description": "MongoDB operations for document database",
+      "capabilities": ["document-db", "nosql", "aggregation"],
+      "active": false,
+      "activationTriggers": ["mongodb", "mongo", "nosql"]
+    },
+    "aws": {
+      "command": "uvx",
+      "args": ["mcp-server-aws"],
+      "env": {},
+      "description": "AWS cloud services integration",
+      "capabilities": ["cloud-services", "s3", "lambda", "rds"],
+      "active": false,
+      "activationTriggers": ["aws", "cloud", "s3", "lambda"]
+    },
+    "docker": {
+      "command": "uvx",
+      "args": ["mcp-server-docker"],
+      "env": {},
+      "description": "Docker container management",
+      "capabilities": ["container-management", "image-building", "orchestration"],
+      "active": false,
+      "activationTriggers": ["docker", "container", "containerization"]
+    },
+    "kubernetes": {
+      "command": "uvx",
+      "args": ["mcp-server-kubernetes"],
+      "env": {},
+      "description": "Kubernetes cluster management",
+      "capabilities": ["cluster-management", "pod-operations", "service-management"],
+      "active": false,
+      "activationTriggers": ["kubernetes", "k8s", "cluster"]
+    }
+  },
+  "activationRules": {
+    "autoActivation": true,
+    "maxConcurrentServers": 5,
+    "priorityOrder": [
+      "filesystem",
+      "git",
+      "browsermcp",
+      "postgres",
+      "sqlite"
+    ]
+  },
+  "healthChecks": {
+    "enabled": true,
+    "interval": 300000,
+    "retryAttempts": 3,
+    "timeoutMs": 10000
+  },
+  "logging": {
+    "level": "info",
+    "logFile": "/Users/ofri/repos/temp-site/.claude/logs/mcp.log",
+    "rotationSize": "10MB",
+    "maxFiles": 5
+  }
+}

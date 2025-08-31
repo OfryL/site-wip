@@ -1,0 +1,244 @@
+{
+  "version": "1.0.0",
+  "workflows": {
+    "project-initialization": {
+      "name": "Project Initialization",
+      "description": "Complete project setup workflow",
+      "steps": [
+        {
+          "id": "git-init",
+          "agent": "git-expert",
+          "task": "Initialize git repository",
+          "dependencies": []
+        },
+        {
+          "id": "tech-stack-selection",
+          "agent": "orchestrator",
+          "task": "Analyze and recommend technology stack",
+          "dependencies": ["git-init"]
+        },
+        {
+          "id": "project-structure",
+          "agent": "software-engineering-expert",
+          "task": "Create optimal project structure",
+          "dependencies": ["tech-stack-selection"]
+        },
+        {
+          "id": "development-environment",
+          "agent": "vibe-coding-coordinator",
+          "task": "Setup development environment",
+          "dependencies": ["project-structure"]
+        }
+      ]
+    },
+    "feature-development": {
+      "name": "Feature Development",
+      "description": "End-to-end feature development workflow",
+      "steps": [
+        {
+          "id": "requirement-analysis",
+          "agent": "orchestrator",
+          "task": "Analyze feature requirements",
+          "dependencies": []
+        },
+        {
+          "id": "architecture-design",
+          "agent": "software-engineering-expert",
+          "task": "Design feature architecture",
+          "dependencies": ["requirement-analysis"]
+        },
+        {
+          "id": "security-review",
+          "agent": "security-specialist",
+          "task": "Security impact assessment",
+          "dependencies": ["architecture-design"]
+        },
+        {
+          "id": "implementation",
+          "agent": "task-executor",
+          "task": "Implement feature code",
+          "dependencies": ["security-review"]
+        },
+        {
+          "id": "code-review",
+          "agent": "code-reviewer",
+          "task": "Review implementation quality",
+          "dependencies": ["implementation"]
+        },
+        {
+          "id": "testing",
+          "agent": "testing-specialist",
+          "task": "Create and run tests",
+          "dependencies": ["code-review"]
+        },
+        {
+          "id": "documentation",
+          "agent": "documentation-specialist",
+          "task": "Update documentation",
+          "dependencies": ["testing"]
+        },
+        {
+          "id": "validation",
+          "agent": "task-checker",
+          "task": "Final validation and approval",
+          "dependencies": ["documentation"]
+        }
+      ]
+    },
+    "bug-fix": {
+      "name": "Bug Fix Workflow",
+      "description": "Systematic bug resolution process",
+      "steps": [
+        {
+          "id": "bug-analysis",
+          "agent": "code-reviewer",
+          "task": "Analyze bug and root cause",
+          "dependencies": []
+        },
+        {
+          "id": "security-check",
+          "agent": "security-specialist",
+          "task": "Check for security implications",
+          "dependencies": ["bug-analysis"]
+        },
+        {
+          "id": "fix-implementation",
+          "agent": "task-executor",
+          "task": "Implement bug fix",
+          "dependencies": ["security-check"]
+        },
+        {
+          "id": "testing",
+          "agent": "testing-specialist",
+          "task": "Test fix and regression testing",
+          "dependencies": ["fix-implementation"]
+        },
+        {
+          "id": "validation",
+          "agent": "task-checker",
+          "task": "Validate fix completion",
+          "dependencies": ["testing"]
+        }
+      ]
+    },
+    "performance-optimization": {
+      "name": "Performance Optimization",
+      "description": "Systematic performance improvement workflow",
+      "steps": [
+        {
+          "id": "performance-analysis",
+          "agent": "performance-optimizer",
+          "task": "Analyze current performance metrics",
+          "dependencies": []
+        },
+        {
+          "id": "bottleneck-identification",
+          "agent": "performance-optimizer",
+          "task": "Identify performance bottlenecks",
+          "dependencies": ["performance-analysis"]
+        },
+        {
+          "id": "optimization-strategy",
+          "agent": "software-engineering-expert",
+          "task": "Design optimization strategy",
+          "dependencies": ["bottleneck-identification"]
+        },
+        {
+          "id": "implementation",
+          "agent": "task-executor",
+          "task": "Implement optimizations",
+          "dependencies": ["optimization-strategy"]
+        },
+        {
+          "id": "performance-testing",
+          "agent": "performance-optimizer",
+          "task": "Validate performance improvements",
+          "dependencies": ["implementation"]
+        },
+        {
+          "id": "documentation",
+          "agent": "documentation-specialist",
+          "task": "Document optimization changes",
+          "dependencies": ["performance-testing"]
+        }
+      ]
+    },
+    "deployment": {
+      "name": "Deployment Workflow",
+      "description": "Production deployment process",
+      "steps": [
+        {
+          "id": "pre-deployment-check",
+          "agent": "task-checker",
+          "task": "Validate deployment readiness",
+          "dependencies": []
+        },
+        {
+          "id": "security-scan",
+          "agent": "security-specialist",
+          "task": "Final security scan",
+          "dependencies": ["pre-deployment-check"]
+        },
+        {
+          "id": "deployment-execution",
+          "agent": "devops-expert",
+          "task": "Execute deployment process",
+          "dependencies": ["security-scan"]
+        },
+        {
+          "id": "post-deployment-validation",
+          "agent": "task-checker",
+          "task": "Validate deployment success",
+          "dependencies": ["deployment-execution"]
+        },
+        {
+          "id": "monitoring-setup",
+          "agent": "devops-expert",
+          "task": "Ensure monitoring is active",
+          "dependencies": ["post-deployment-validation"]
+        }
+      ]
+    }
+  },
+  "qualityGates": {
+    "code-quality": {
+      "agent": "code-reviewer",
+      "criteria": [
+        "Code follows style guidelines",
+        "No critical bugs detected",
+        "Performance impact acceptable",
+        "Test coverage adequate"
+      ]
+    },
+    "security": {
+      "agent": "security-specialist",
+      "criteria": [
+        "No security vulnerabilities",
+        "Authentication properly implemented",
+        "Data validation in place",
+        "Secure communication protocols"
+      ]
+    },
+    "documentation": {
+      "agent": "documentation-specialist",
+      "criteria": [
+        "API documentation updated",
+        "Code comments adequate",
+        "User documentation current",
+        "Change log updated"
+      ]
+    }
+  },
+  "automation": {
+    "triggers": {
+      "on-push": ["code-quality", "security"],
+      "on-pull-request": ["code-quality", "security", "documentation"],
+      "on-release": ["deployment"]
+    },
+    "notifications": {
+      "quality-gate-failure": ["code-reviewer", "orchestrator"],
+      "security-issue": ["security-specialist", "orchestrator"],
+      "deployment-failure": ["devops-expert", "orchestrator"]
+    }
+  }
+}
